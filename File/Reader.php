@@ -25,7 +25,7 @@ use BLKTech\DataType\Path;
 
 class Reader extends \BLKTech\FileSystem\File
 {
-    private $handle=false;
+    private $handle = false;
 
     public function __construct(Path $path)
     {
@@ -34,7 +34,7 @@ class Reader extends \BLKTech\FileSystem\File
 
         $this->handle = fopen($this->__toString(), $mode);
 
-        if($this->handle===false) {
+        if($this->handle === false) {
             throw new IOException($this->__toString());
         }
     }
@@ -47,7 +47,7 @@ class Reader extends \BLKTech\FileSystem\File
 
         $line = fgets($this->handle, $maxLength);
 
-        if($line===false) {
+        if($line === false) {
             throw new IOException($this->__toString());
         }
 
@@ -62,7 +62,7 @@ class Reader extends \BLKTech\FileSystem\File
 
         $line = fread($this->handle, $length);
 
-        if($line===false) {
+        if($line === false) {
             throw new IOException($this->__toString());
         }
 
@@ -76,7 +76,7 @@ class Reader extends \BLKTech\FileSystem\File
 
     public function __destruct()
     {
-        if($this->handle!==false) {
+        if($this->handle !== false) {
             if(!fclose($this->handle)) {
                 throw new IOException($this->__toString());
             }
